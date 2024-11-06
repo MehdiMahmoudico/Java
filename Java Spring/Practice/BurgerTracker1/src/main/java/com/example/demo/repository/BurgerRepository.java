@@ -10,4 +10,5 @@ import com.example.demo.model.Burger;
 @Repository
 public interface BurgerRepository extends CrudRepository<Burger, Long> {
 	List<Burger> findAll();
+	Burger findById(long id);
 }

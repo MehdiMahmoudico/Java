@@ -18,34 +18,13 @@
         
     </head>
 <body class="container">
-<div class="mt-3">
-<h1 style="color: blue ;">Burger Tracker</h1>
-	<table class="table table-hover">
- <thead>
-	<tr>
-      <th scope="col">Burger Name</th>
-      <th scope="col">Restaurant Name</th>
-      <th scope="col">Rating (out of 5)</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  	<tbody>
-  		
-		<c:forEach items="${burgers}" var="burger">
-		<tr>
-		<td><c:out value = "${burger.name}"/></td>
-		<td><c:out value = "${burger.restaurant}"/></td>
-		<td><c:out value = "${burger.rates}"/></td>
-		<td><a href="/burgers/edit/${burger.id}">Edit</a></td>
-		</tr>
-		</c:forEach>
-		
-	</tbody>
-</table>
-</div>
 <div>
-<h1 style="color: blue ;">Add a Burger</h1>
-<form:form action="/burgers" method="post" modelAttribute="burger">
+ <div class="mt-3 d-flex justify-content-between">
+<h1 style="color: blue ;">Edit Burger</h1>
+<a href="/">Go Back</a>
+</div>
+<form:form action="/burgers/${burger.id }" method="post" modelAttribute="burger">
+	    <input type="hidden" name="_method" value="PUT"/>
     <div class="mb-3">
         <form:label class="form-label" path="name">Name</form:label>
         <form:errors style="color: red ;"  path="name"/>
