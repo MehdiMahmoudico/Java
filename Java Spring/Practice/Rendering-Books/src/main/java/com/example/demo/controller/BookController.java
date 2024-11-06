@@ -24,7 +24,7 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 	
-	@GetMapping("/books/show")
+	@GetMapping("/books")
 	public String index(Model model) {
 		 List<Book> books = bookService.findallBooks();
 		 model.addAttribute("books", books);

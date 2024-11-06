@@ -17,9 +17,29 @@
         
     </head>
 <body class="container">
-		<h1><c:out value = "${book.title}"/></h1>
-		<p>Description: <c:out value = "${book.description}"/></p>
-		<p>Language: <c:out value = "${book.language}"/></p>
-		<p>Number Of Pages: <c:out value = "${book.numberOfPages}"/></p>
+<table class="table table-hover">
+ <thead>
+	<tr>
+		<th scope="col">ID</th>
+      <th scope="col">title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Language</th>
+      <th scope="col">Number Of Pages</th>
+    </tr>
+  </thead>
+  	<tbody>
+  		
+		<c:forEach items="${books}" var="book">
+		<tr>
+		<th scope="row"><c:out value = "${book.id}"/></th>
+		<td><a href="books/${book.id}"><c:out value = "${book.title}"/></td></a>
+		<td><c:out value = "${book.description}"/></td>
+		<td><c:out value = "${book.language}"/></td>
+		<td><c:out value = "${book.numberOfPages}"/></td>
+		</tr>
+		</c:forEach>
+		
+	</tbody>
+</table>
 </body>
 </html>
