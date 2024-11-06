@@ -17,7 +17,7 @@
         <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
         
     </head>
-<body class="container">
+<body class="container"> 
 <div class="mt-3">
 <h1 style="color: blue ;">Burger Tracker</h1>
 	<table class="table table-hover">
