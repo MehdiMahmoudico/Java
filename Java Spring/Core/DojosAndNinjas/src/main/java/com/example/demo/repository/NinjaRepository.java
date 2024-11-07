@@ -10,6 +10,6 @@ import com.example.demo.model.Ninja;
 @Repository
 public interface NinjaRepository extends CrudRepository<Ninja, Long> {
 	List<Ninja> findAll();
-	Ninja findByDojoId(Long id);
+	List<Ninja> findByDojoId(Long id);
 
 }

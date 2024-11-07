@@ -66,11 +66,11 @@ public class NinjaController {
 	}
 	
 	@GetMapping("/dojos/{id}")
-	public String show(@PathVariable("id") Long id, Model model) {
+	public String show(@PathVariable("id") Long id,@ModelAttribute("ninja") Ninja ninja,  Model model) {
         Dojo dojo = dojoService.findDojo(id);
-        Ninja ninja = ninjaService.findNinja(id);
+        List<Ninja> ninjas = ninjaService.findNinja(id);
         model.addAttribute("dojo", dojo);
-        model.addAttribute("ninja", ninja);
+        model.addAttribute("ninjas", ninjas);
         return "show.jsp";
     }
 		

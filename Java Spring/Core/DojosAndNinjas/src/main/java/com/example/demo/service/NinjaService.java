@@ -26,7 +26,7 @@ public class NinjaService {
 		return ninjaRepo.findAll();
 	}
 
-	public Ninja findNinja(Long id) {
+	public List<Ninja> findNinja(Long id) {
 		return ninjaRepo.findByDojoId(id);
 	}
 }
