@@ -46,4 +46,7 @@ public class BookService {
 	public Book updateBook(Book book) {
 		return bookRepo.save(book);
 	}
+	 public List<Book> searchBooksByTitle(String title) {
+	        return bookRepo.findByTitleContaining(title);
+	    }
 }

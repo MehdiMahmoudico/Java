@@ -1,11 +1,8 @@
 package com.example.demo.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.Book;
 import com.example.demo.model.User;
@@ -117,7 +115,26 @@ public class BookController {
             return "redirect:/home";}
 		}
 
-	
+	 @GetMapping("/search")
+	    public String searchBooks(@RequestParam("title") String title, Model model) {
+	        List<Book> books = bookService.searchBooksByTitle(title);
+	        model.addAttribute("books", books);
+	        return "home.jsp"; // View name where you display the books
+	    }
+	 @GetMapping("/sbooks")
+	    public String searchBookss(@RequestParam(value = "title", required = false) String title, Model model) {
+	        // If no title is provided, return all books
+	        List<Book> books;
+	        if (title != null && !title.isEmpty()) {
+	            books = bookService.searchBooksByTitle(title); // Filter books by title
+	        } else {
+	            books = bookService.findallBooks(); // Return all books if no search term
+	        }
+
+	        model.addAttribute("books", books);
+	        return "home.jsp"; // The name of the JSP view
+	    }
+	 
 
 	}
 
