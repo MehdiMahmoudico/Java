@@ -116,9 +116,15 @@ public class BookController {
 		}
 
 	 @GetMapping("/search")
-	    public String searchBooks(@RequestParam("title") String title, Model model) {
+	    public String searchBooks(@RequestParam("title") String title, Model model, HttpSession session) {
+		 Long userId= (Long)session.getAttribute("userId");
+		 if (userId == null) {
+				return "redirect:/";
+			}
+		 User user  = userService.findUserById(userId);
 	        List<Book> books = bookService.searchBooksByTitle(title);
 	        model.addAttribute("books", books);
+	        model.addAttribute("user", user);
 	        return "home.jsp"; // View name where you display the books
 	    }
 	 @GetMapping("/sbooks")
